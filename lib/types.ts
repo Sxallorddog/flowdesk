@@ -7,7 +7,8 @@ export interface Client { id: string; name: string; industry: string; contact: s
 export interface Deal { id: string; clientId: string; title: string; stage: DealStage; value: number; probability: number; ownerId: string; source: string; nextAction: string; closeDate: string; lossReason?: string }
 export interface Task { id: string; title: string; status: TaskStatus; priority: "low" | "medium" | "high"; assigneeId: string; dealId?: string; clientId?: string; dueDate: string }
 export interface Activity { id: string; actorId: string; action: string; entity: string; entityId: string; detail: string; at: string }
-export interface WorkspaceState { workspace: { id: string; name: string; plan: string }; currentUserId: string; members: Person[]; clients: Client[]; deals: Deal[]; tasks: Task[]; activities: Activity[] }
+export interface PipelineStage { id: DealStage; name: string }
+export interface WorkspaceState { workspace: { id: string; name: string; plan: string }; currentUserId: string; pipelineStages: PipelineStage[]; members: Person[]; clients: Client[]; deals: Deal[]; tasks: Task[]; activities: Activity[] }
 
 export const stageLabels: Record<DealStage, string> = {
   new: "Новий лід",

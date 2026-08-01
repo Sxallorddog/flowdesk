@@ -27,3 +27,9 @@ test("activity metadata is generated for mutations", () => {
   assert.ok(event.id.length > 10);
   assert.ok(Number.isFinite(Date.parse(event.at)));
 });
+
+test("pipeline stage configuration is complete and editable", () => {
+  assert.deepEqual(seedState.pipelineStages.map((stage) => stage.id), ["new", "contacted", "proposal", "negotiation", "won", "lost"]);
+  assert.equal(new Set(seedState.pipelineStages.map((stage) => stage.id)).size, seedState.pipelineStages.length);
+  assert.ok(seedState.pipelineStages.every((stage) => stage.name.trim().length > 0));
+});
