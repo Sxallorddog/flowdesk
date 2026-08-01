@@ -6,6 +6,14 @@ const date = (offset: number) => new Date(now.getTime() + offset * 86400000).toI
 export const seedState: WorkspaceState = {
   workspace: { id: "ws_northline", name: "Northline Studio", plan: "Команда" },
   currentUserId: "u_owner",
+  pipelineStages: [
+    { id: "new", name: "Новий лід" },
+    { id: "contacted", name: "Зв’язалися" },
+    { id: "proposal", name: "Пропозиція" },
+    { id: "negotiation", name: "Переговори" },
+    { id: "won", name: "Виграно" },
+    { id: "lost", name: "Програно" },
+  ],
   members: [
     { id: "u_owner", name: "Олександр Марченко", initials: "ОМ", role: "owner", title: "Власник", email: "oleksandr@northline.studio" },
     { id: "u_sales", name: "Марія Бондар", initials: "МБ", role: "admin", title: "Sales Manager", email: "maria@northline.studio" },

@@ -18,7 +18,7 @@ async function ensureStorage() {
 function isWorkspaceState(value: unknown): value is WorkspaceState {
   if (!value || typeof value !== "object") return false;
   const state = value as Partial<WorkspaceState>;
-  return !!state.workspace && Array.isArray(state.clients) && Array.isArray(state.deals) && Array.isArray(state.tasks) && Array.isArray(state.activities) && Array.isArray(state.members);
+  return !!state.workspace && Array.isArray(state.pipelineStages) && Array.isArray(state.clients) && Array.isArray(state.deals) && Array.isArray(state.tasks) && Array.isArray(state.activities) && Array.isArray(state.members);
 }
 
 export async function GET() {

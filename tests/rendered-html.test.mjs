@@ -24,3 +24,18 @@ test("private CRM route is excluded from search indexing", async () => {
   assert.match(robots, /disallow: \["\/app\/", "\/api\/"\]/);
   assert.doesNotMatch(sitemap, /\/app/);
 });
+
+test("requested CRM interactions are wired to real state changes", async () => {
+  const [onboarding, crm] = await Promise.all([
+    readFile(new URL("../app/onboarding/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../components/crm-app.tsx", import.meta.url), "utf8"),
+  ]);
+  assert.match(onboarding, /draggable/);
+  assert.match(onboarding, /reorderStage/);
+  assert.match(onboarding, /pipelineStages: \[\.\.\.stages, lost\]/);
+  assert.match(crm, /function ClientDrawer/);
+  assert.match(crm, /оновив картку клієнта/);
+  assert.match(crm, /setFilter\("deal"\)/);
+  assert.match(crm, /function Notifications/);
+  assert.match(crm, /setModal\("member"\)/);
+});
